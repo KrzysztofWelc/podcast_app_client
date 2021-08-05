@@ -1,0 +1,87 @@
+{
+  "more": "więcej",
+  "podcasts": "Podcasty",
+  "users": "Użytkownicy",
+  "error": {
+    "general": "Coś poszło nie tak.",
+    "commentNotEmpty": "Komentarz musi zawierać treść.",
+    "allInputsRequired": "Wypełnij wszystkie wymagane pola.",
+    "matchPasswords": "Hasła muszą się zgadzać.",
+    "acceptPolicy": "Musisz zaakceptować regulamin."
+  },
+  "home": {
+    "popular": "Popularne",
+    "newest": "Najnowsze"
+  },
+  "navbar": {
+    "publish": "Publikuj",
+    "logOut": "Wyloguj",
+    "login": "Zaloguj się",
+    "register": "Zarejestruj się",
+    "search_placeholder": "szukana fraza",
+    "search_button": "szukaj"
+  },
+  "register": {
+    "header": "Rejestracja",
+    "email": "email",
+    "username": "nazwa użytkownika",
+    "password": "hasło",
+    "password2": "powtórz hasło",
+    "avatar": "wybierz avatar",
+    "submit": "Zarejestruj się"
+  },
+  "login": {
+    "header": "Logowanie",
+    "email": "email",
+    "password": "hasło",
+    "submit": "Zaloguj się"
+  },
+  "publish": {
+    "header": "Opublikuj podcast",
+    "title": "tytuł",
+    "desc": "opis",
+    "podcastFile": "wybierz plik podcastu",
+    "podcastCover": "wybierz okładkę",
+    "submit": "prześlij"
+  },
+  "podcastInfo": {
+    "comment": "komentarz",
+    "addComment": "skomentuj",
+    "answer": "odpowiedź",
+    "addAnswer": "odpowiedz",
+    "showAnswers": "zobacz odpowiedzi"
+  },
+  "profile": {
+    "nav": {
+      "podcasts": "podcasty",
+      "data": "dane"
+    },
+    "change_pwd": {
+      "header": "Znień hasło",
+      "oldPassword": "stare hasło",
+      "newPassword": "nowe hasło",
+      "newPassword2": "powtórz nowe hasło",
+      "submit": "prześlij"
+    },
+    "changeAvatar": {
+      "header": "Znień avatar",
+      "label": "wybierz nowy avatar",
+      "submit": "prześlij"
+    },
+    "changeBio": {
+      "header": "Ustaw swój biogram",
+      "label": "napisz coś o sobie",
+      "submit": "prześlij"
+    }
+  },
+  "footer": "Krzysztof Welc 2021",
+  "acceptPolicy": {
+    "accept": "Akceptuję ",
+    "policy": "regulamin."
+  },
+  "button": {
+    "delete": "usuń",
+    "edit": "zmień",
+    "play": "odtwórz"
+  }
+}

@@ -1,0 +1,101 @@
+import React, { useState, useEffect } from "react";
+import env from "react-dotenv";
+import {
+  useParams,
+  useRouteMatch,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
+import axios from "../../utils/axios";
+import { useAuth } from "../../contexts/GlobalContext";
+import { useTranslation } from "react-i18next";
+import Podcasts from "./Podcasts";
+import EditData from "./EditData";
+import PrivateRoute from "../../logic/routes/PrivateRoute";
+
+export default function Profile() {
+  const { id } = useParams();
+  let { path, url } = useRouteMatch();
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const { currentUser } = useAuth();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    async function fetchUser() {
+      try {
+        setLoading(true);
+        const { data } = await axios.get(`/api/users/${id}/data`);
+        setUser(data);
+        setLoading(false);
+      } catch (e) {
+        setError(e);
+      }
+    }
+
+    fetchUser();
+  }, [id]);
+
+  return (
+    <div>
+      {user && (
+        <div>
+          <img
+            className="w-52 h-52 rounded-full block mx-auto"
+            src={`${env.BASE_URL}api/users/avatar/${user.profile_img}`}
+            alt="użytkownik"
+          />
+          <h2 className="text-4xl text-center mb-3">{user.username}</h2>
+          {user && user.bio && <p className={"text-center"}>{user.bio}</p>}
+        </div>
+      )}
+
+      {error && (
+        <div
+          className="alert-danger fixed bottom-6 left-1/2 transform -translate-x-2/4"
+          role="alert"
+        >
+          {t("error.general")}
+        </div>
+      )}
+
+      {currentUser && currentUser.id == id && (
+        <nav>
+          <ul className="border-b list-none w-2/6 mx-auto flex justify-around items-center">
+            <li>
+              <Link
+                className="text-2xl text-blue-400 hover:text-blue-500 cursor-pointer mx-2"
+                to={url}
+              >
+                {t("profile.nav.podcasts")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="text-2xl text-blue-400 hover:text-blue-500 cursor-pointer mx-2"
+                to={`${url}/edit_data`}
+              >
+                {t("profile.nav.data")}
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      )}
+
+      <div className="my-8">
+        <Switch>
+          <Route exact path={path} component={Podcasts} />
+          <PrivateRoute
+            condition={(user) => user && user.id == id}
+            redirectURL={url}
+            exact
+            path={`${url}/edit_data`}
+            component={EditData}
+          />
+        </Switch>
+      </div>
+    </div>
+  );
+}
